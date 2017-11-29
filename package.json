@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "/server.js"
+    "start": "nodemon server.js  --ignore public --trace-warnings "
   },
   "keywords": [
     "Portfolio"
@@ -16,6 +16,13 @@
     "nodemon": "^1.12.1"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.0",
+    "dotenv": "^4.0.0",
+    "es6-promisify": "^5.0.0",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.4",
+    "mongoose-mongodb-errors": "0.0.2",
+    "pug": "^2.0.0-rc.4"
   }
 }

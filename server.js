@@ -1,11 +1,22 @@
-const routes = require('./api/routes/routes');
+const mongoose = require('mongoose');
 
-var express = require('express'),
-app = express(),
-port = process.env.PORT || 8080;
+// import environmental variables from our variables.env file
+require('dotenv').config({ path: 'variables.env' });
 
-app.use('/', routes);
+// Connect to our Database and handle an bad connections
+mongoose.connect(process.env.DATABASE,  { useMongoClient: true });
+mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
+mongoose.connection.on('error', (err) => {
+  console.error(`${err.message}`);
+});
 
-app.listen(port);
+//import the model (or more if you have)
+require('./api/models/User');
 
-console.log('todo list RESTful API server started on: ' + port);
+const app = require ('./app.js');
+
+app.set('port', process.env.PORT || 7777 );
+
+const server = app.listen(app.get('port'), ()=> {
+    console.log(`Zenfolio API running → PORT ${server.address().port}`);
+});
