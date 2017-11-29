@@ -7,8 +7,8 @@ exports.home = (req, res) => {
 };
 
 exports.getAll = async (req, res) => {
-  const tests = await Test.find();
-  res.json( { message: 'Test', tests });
+  const users = await User.find();
+  res.json( { message: 'User', users });
 };
 
 exports.create = async (req, res) => {
